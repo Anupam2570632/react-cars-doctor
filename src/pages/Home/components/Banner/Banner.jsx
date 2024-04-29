@@ -17,7 +17,7 @@ import BannerMessage from './BannerMessage';
 
 export default function Banner() {
     return (
-        <div className='w-[100vw] h-[600px]'>
+        <div className='w-[100vw] h-[650px] overflow-hidden'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -30,42 +30,42 @@ export default function Banner() {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
+                className="mySwiper h-[650px]"
                 loop={true}
             >
-                <SwiperSlide className='relative max-h-[650px]'>
-                    <img className='object-contain w-full h-full object-center' src={banner1} alt="" />
-                    <div className='absolute bg-black bg-opacity-50 flex items-center md:pl-40 inset-0'>
+                <SwiperSlide className='relative'>
+                    <img className='object-cover h-full w-full object-center' src={banner1} alt="" />
+                    <div className='absolute bg-black p-4 bg-opacity-50 flex items-center md:pl-40 inset-0'>
                         <BannerMessage />
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='relative max-h-[650px]'>
-                    <img className='object-contain w-full h-full object-center' src={banner2} alt="" />
-                    <div className='absolute bg-black bg-opacity-50 flex items-center md:pl-40 inset-0'>
+                <SwiperSlide className='relative'>
+                    <img className='object-cover h-full w-full object-center' src={banner2} alt="" />
+                    <div className='absolute bg-black p-4 bg-opacity-50 flex items-center md:pl-40 inset-0'>
                         <BannerMessage />
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='relative max-h-[650px]'>
-                    <img className='object-contain w-full h-full object-center' src={banner3} alt="" />
-                    <div className='absolute bg-black bg-opacity-50 flex items-center md:pl-40 inset-0'>
+                <SwiperSlide className='relative'>
+                    <img className='object-cover h-full w-full object-center' src={banner3} alt="" />
+                    <div className='absolute bg-black p-4 bg-opacity-50 flex items-center md:pl-40 inset-0'>
                         <BannerMessage />
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='relative max-h-[650px]'>
-                    <img className='object-contain w-full h-full object-center' src={banner4} alt="" />
-                    <div className='absolute bg-black bg-opacity-50 flex items-center md:pl-40 inset-0'>
+                <SwiperSlide className='relative'>
+                    <img className='object-cover h-full w-full object-center' src={banner4} alt="" />
+                    <div className='absolute bg-black p-4 bg-opacity-50 flex items-center md:pl-40 inset-0'>
                         <BannerMessage />
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='relative max-h-[650px]'>
-                    <img className='object-contain w-full h-full object-center' src={banner5} alt="" />
-                    <div className='absolute bg-black bg-opacity-50 flex items-center md:pl-40 inset-0'>
+                <SwiperSlide className='relative'>
+                    <img className='object-cover h-full w-full object-center' src={banner5} alt="" />
+                    <div className='absolute bg-black p-4 bg-opacity-50 flex items-center md:pl-40 inset-0'>
                         <BannerMessage />
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='relative max-h-[650px]'>
-                    <img className='object-contain w-full h-full object-center' src={banner6} alt="" />
-                    <div className='absolute bg-black bg-opacity-50 flex items-center md:pl-40 inset-0'>
+                <SwiperSlide className='relative'>
+                    <img className='object-cover h-full w-full object-center' src={banner6} alt="" />
+                    <div className='absolute bg-black p-4 bg-opacity-50 flex items-center md:pl-40 inset-0'>
                         <BannerMessage />
                     </div>
                 </SwiperSlide>
