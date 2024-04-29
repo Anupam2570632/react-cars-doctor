@@ -11,7 +11,7 @@ const NavBar = () => {
         <li><NavLink to={'/contact'}>Contact</NavLink></li>
     </>
     return (
-        <div className="w-full mx-auto bg-green-200 fixed top-0 bg-opacity-45 shadow-md">
+        <div className="w-full mx-auto bg-green-200 fixed top-0 z-10 bg-opacity-85 shadow-md">
             <div className="navbar bg-transparent w-11/12 md:w-4/5 mx-auto max-w-[1500px] bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
