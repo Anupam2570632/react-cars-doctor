@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa6';
 const Footer = () => {
     return (
         <div className="w-full bg-[#131313]">
-            <footer className="footer w-11/12 md:w-4/5 mx-auto py-20 text-white">
+            <footer className="footer w-11/12 md:w-4/5 max-w-[1500px] mx-auto py-20 text-white">
                 <aside className='space-y-6'>
                     <img src={image} alt="" />
                     <p className='max-w-[250px] text-[#E8E8E8]'>Edwin Diaz is a software and web technologies engineer, a life coach trainer who is also a serial .</p>
