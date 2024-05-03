@@ -11,7 +11,11 @@ const Services = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
-
+    
+    if (services.length === 0) {
+        return <div className="h-[50vh] w-[100vw] flex items-center justify-center"><span className="loading loading-lg loading-spinner text-primary"></span></div>
+    }
+    
     console.log(services)
 
 
