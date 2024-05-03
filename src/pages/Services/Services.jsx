@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Services = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('/services.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -27,7 +28,11 @@ const Services = () => {
                             <h1 className="text-[#444444] font-bold text-2xl">{service.title}</h1>
                             <div className="text-xl font-bold text-[#FF3811] flex items-center justify-between">
                                 <h2 className="flex items-center ">Price:<BsCurrencyDollar />{service.price}</h2>
-                                <FaArrowRight className="hover:cursor-pointer" />
+                                <div>
+                                    <Link to={`service/${service._id}`}>
+                                        <FaArrowRight className="hover:cursor-pointer" />
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>)
