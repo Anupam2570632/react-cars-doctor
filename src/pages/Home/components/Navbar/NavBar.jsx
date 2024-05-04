@@ -1,7 +1,15 @@
+import { useContext } from "react";
 import { FaBagShopping, FaMagnifyingGlass } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../../Provider/AuthProvider/AuthProvider";
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut=()=>{
+        logOut()
+        .then()
+        .catch()
+    }
 
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -32,7 +40,12 @@ const NavBar = () => {
                 <div className="navbar-end flex items-center gap-4">
                     <FaBagShopping className="text-xl font-bold text-[#444444]" />
                     <FaMagnifyingGlass className="text-xl font-bold text-[#444444]" />
-                    <Link to={'/login'}><button className="btn btn-active">LogIn</button></Link>
+                    {
+                        user ?
+                            <button onClick={handleLogOut} className="btn btn-active">Log Out</button>
+                            :
+                            <Link to={'/login'}><button className="btn btn-active">LogIn</button></Link>
+                    }
                 </div>
             </div>
         </div>
