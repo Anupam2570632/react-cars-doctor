@@ -4,10 +4,44 @@ import bannerImg from '../../assets/assets/images/banner/4.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import Footer from "../Home/components/Footer/Footer";
+import swal from "sweetalert";
 
 const Checkout = () => {
     const service = useLoaderData()
     const { user } = useContext(AuthContext)
+
+    const handleCheckout = e => {
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const date = form.date.value;
+        const price = form.price.value;
+        const serviceName = service.title;
+        const img = service.img;
+
+        const item = { serviceName, img, name, email, date, price }
+        console.log(name, email, date, price)
+
+        fetch('http://localhost:5000/checkout', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    swal({
+                        title: "Order placed successfully!",
+                        icon: "success",
+                    });
+                    form.reset()
+                }
+            })
+
+    }
     return (
         <>
             <NavBar />
@@ -22,7 +56,7 @@ const Checkout = () => {
                     </div>
 
                 </div>
-                <form className="flex gap-6 flex-col w-[50%] mx-auto py-10">
+                <form onSubmit={handleCheckout} className="flex gap-6 flex-col w-[50%] mx-auto py-10">
                     <div className="flex gap-6">
                         <div className="flex flex-col gap-2 w-full">
                             <label htmlFor="name">Your name:</label>
@@ -30,7 +64,7 @@ const Checkout = () => {
                         </div>
                         <div className="flex flex-col gap-2 w-full">
                             <label htmlFor="email">Your Email:</label>
-                            <input required className="px-4 py-2 rounded-md bg-[#CCCC] w-full" type="email" name="email" placeholder="Your Email" defaultValue={user.email} aria-label="Your name" />
+                            <input required disabled className="px-4 py-2 rounded-md bg-[#CCCC] w-full" type="email" name="email" placeholder="Your Email" defaultValue={user.email} aria-label="Your name" />
                         </div>
                     </div>
                     <div className="flex gap-6">
@@ -40,13 +74,13 @@ const Checkout = () => {
                         </div>
                         <div className="flex flex-col gap-2 w-full">
                             <label htmlFor="price">Service Fee:</label>
-                            <input required className="px-4 py-2 rounded-md bg-[#CCCC] w-full" type="text" name="price" defaultValue={'$' + service.price} aria-label="Your name" />
+                            <input required disabled className="px-4 py-2 rounded-md bg-[#CCCC] w-full" type="text" name="price" defaultValue={'$' + service.price} aria-label="Your name" />
                         </div>
                     </div>
                     <button type="submit" className="btn btn-block">Checkout</button>
                 </form>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 };

@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../Home/components/Navbar/NavBar";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
     const { logIn } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const handleLogIn = e => {
         e.preventDefault()
@@ -15,6 +18,15 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 console.log(result.user)
+                const user = { email }
+                //get access token
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : '/')
+                        }
+                    })
             })
             .catch(error => {
                 console.error(error)
